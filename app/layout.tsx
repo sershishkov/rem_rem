@@ -4,7 +4,6 @@ import AuthProvider from '@/components/AuthProvider/AuthProvider';
 import ToastProvider from '@/components/ToastProvider/toast.provider';
 import { ThemeProvider } from '@mui/material/styles';
 
-import CssBaseline from '@mui/material/CssBaseline';
 import theme_dark from '../mui_theme/theme_dark';
 import 'react-toastify/dist/ReactToastify.css';
 import './globals.css';
@@ -26,7 +25,6 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <ThemeProvider theme={theme_dark}>
-        <CssBaseline />
         <html lang='en' suppressHydrationWarning>
           <body suppressHydrationWarning>
             <ToastProvider>

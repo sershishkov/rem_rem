@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation';
 
 import { userProfile__update } from '@/lib/actions/user.actions';
 
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
