@@ -13,8 +13,8 @@ import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 
 export const metadata: Metadata = {
-  title: 'Calculation',
-  description: 'Calculation',
+  title: 'РасчетРемонт',
+  description: 'Расчет Ремонтов',
 };
 
 export default function RootLayout({
