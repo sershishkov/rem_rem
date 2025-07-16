@@ -1,0 +1,580 @@
+@import url('https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 5mm 10mm 5mm 20mm;
+  background-color: white;
+  font-family: 'Tinos', serif;
+  font-weight: 400;
+  font-style: normal;
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul,
+  ol,
+  button {
+    color: black;
+    font-family: 'Tinos', serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  strong {
+    color: black;
+  }
+
+  .base-contr-chapter {
+    font-weight: 900;
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+  }
+  .base-contr-paragraph {
+    text-indent: 2rem;
+    font-size: 0.95rem;
+  }
+  .base-contr-text {
+    font-size: 0.95rem;
+  }
+
+  .rems-potochn-chapter {
+    font-weight: 900;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
+  .rems-potochn-paragraph {
+    text-indent: 2rem;
+    font-size: 0.77rem;
+  }
+  .rems-potochn-text {
+    font-size: 0.77rem;
+  }
+  .rems-potochn-italic {
+    text-indent: 2rem;
+    font-style: italic;
+    text-decoration: underline;
+    font-size: 0.77rem;
+  }
+
+  .rems-budjet-chapter {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  .rems-budjet-paragraph {
+    text-indent: 2rem;
+    font-size: 1rem;
+  }
+  .rems-budjet-text {
+    font-size: 1rem;
+  }
+
+  .jkh-budjet-chapter {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  .jkh-budjet-paragraph {
+    text-indent: 2rem;
+    font-size: 1rem;
+  }
+  .jkh-budjet-text {
+    font-size: 1rem;
+  }
+
+  .agro-contract-chapter {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  .agro-contract-paragraph {
+    text-indent: 2rem;
+    font-size: 1rem;
+  }
+  .agro-contract-text {
+    font-size: 1rem;
+  }
+  .jkh-proectn-avt-chapter {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  .jkh-proectn-avt-paragraph {
+    text-indent: 2rem;
+    font-size: 1rem;
+  }
+  .jkh-proectn-avt-text {
+    font-size: 1rem;
+  }
+  .jkh-proectn-avt-akt-text {
+    font-size: 1rem;
+  }
+  .jkh-proectn-avt-kosht-text {
+    font-size: 1rem;
+  }
+  .tehnadzor-chapter {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  .tehnadzor-paragraph {
+    text-indent: 2rem;
+    font-size: 0.85rem;
+  }
+  .tehnadzor-text {
+    font-size: 0.85rem;
+  }
+  .tehnadzor-caption {
+    font-size: 0.5rem;
+  }
+  .tehnadzor-akt-text {
+    font-size: 1rem;
+  }
+  .tehnadzor-akt-caption {
+    font-size: 0.5rem;
+  }
+  .calendarn-grafik-text {
+    font-size: 1rem;
+  }
+  .calendarn-grafik-vertical-text {
+    font-size: 1rem;
+    transform: rotate(-90deg);
+    margin-bottom: -7mm;
+  }
+  .jkh-nakaz-text {
+    font-size: 1rem;
+  }
+  .jkh-pismo-text {
+    font-size: 1rem;
+  }
+  .jkh-trebov-smeta-text {
+    font-size: 1rem;
+  }
+  .nakl-rems-text {
+    font-size: 1rem;
+  }
+
+  .rems-budjet-pr-avt-dog-chapter {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .rems-budjet-pr-avt-dog-paragraph {
+    text-indent: 2rem;
+    font-size: 0.95rem;
+  }
+  .rems-budjet-pr-avt-dog-text {
+    font-size: 0.95rem;
+  }
+  .rems-budjet-pr-avt-akt-chapter {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .rems-budjet-pr-avt-akt-paragraph {
+    text-indent: 2rem;
+    font-size: 0.95rem;
+  }
+  .rems-budjet-pr-avt-akt-text {
+    font-size: 0.95rem;
+  }
+  .rems-budj-jurnal-rabot-text {
+    font-size: 1rem;
+  }
+  .rems-budj-jurnal-rabot-main {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .rems-budj-jurnal-rabot-caption {
+    font-size: 0.5rem;
+  }
+  .rems-budj-jurnal-rabot-italic {
+    font-family: 'Marck Script', cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+  }
+  .rems-budj-jurnal-rabot-hr {
+    height: 1.25rem;
+    color: transparent;
+    border-bottom: 1px solid black;
+  }
+  .rems-budj-jurnal-rabot-empty-row {
+    height: 1.25rem;
+    color: transparent;
+  }
+  .rems-budj-jurnal-avt-vertical {
+    font-size: 1rem;
+    transform: rotate(-90deg);
+  }
+  .rems-budj-jurnal-avt-main {
+    font-size: 1rem;
+  }
+  .rems-budj-jurnal-avt-hr {
+    height: 1.25rem;
+    color: transparent;
+    border-bottom: 1px solid black;
+  }
+
+  .rems-budj-jurnal-avt-empty {
+    height: 1.25rem;
+    color: transparent;
+  }
+
+  .rems-budj-nakaz-gip-main {
+    font-size: 1rem;
+  }
+  .rems-budj-nakaz-gip-hr {
+    height: 1.25rem;
+    color: transparent;
+    border-bottom: 1px solid black;
+  }
+
+  .rems-budj-nakaz-gip-empty {
+    height: 1.25rem;
+    color: transparent;
+  }
+  .rems-budj-nakaz-gip-indent {
+    font-size: 1rem;
+    text-indent: 2rem;
+  }
+  .rems-budj-zavdannya-main {
+    font-size: 1rem;
+  }
+  .rems-budj-zavdannya-empty {
+    height: 1.25rem;
+    color: transparent;
+  }
+  .rems-budj-cc1-main {
+    font-size: 0.95rem;
+  }
+  .rems-budj-cc1-chapter {
+    font-weight: 900;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-decoration: underline;
+  }
+  .rems-budj-cc1-indent {
+    font-size: 0.95rem;
+    text-indent: 2rem;
+  }
+
+  .rems-potochn-akt-skryt-text {
+    font-size: 1rem;
+  }
+  .rems-potochn-akt-skryt-chapter {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .rems-potochn-akt-skryt-sub {
+    font-size: 0.6rem;
+  }
+  .rems-potochn-akt-musor-text {
+    font-size: 1rem;
+  }
+  tbody.table-main {
+    td,
+    th {
+      border: 1px solid gray;
+    }
+  }
+}
+
+@page {
+  size: A4 portrait;
+}
+@page :first {
+  margin-top: 0;
+}
+
+@media print {
+  .page {
+    width: 210mm;
+    padding: 5mm 10mm 5mm 20mm;
+    min-height: 297mm;
+    background: white;
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul,
+    ol,
+    button {
+      color: black;
+      font-family: 'Tinos', serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    strong {
+      color: black;
+    }
+    .base-contr-chapter {
+      font-weight: 900;
+      font-size: 0.95rem;
+      margin-top: 0.75rem;
+    }
+    .base-contr-paragraph {
+      text-indent: 2rem;
+      font-size: 0.95rem;
+    }
+    .base-contr-text {
+      font-size: 0.95rem;
+    }
+
+    .rems-potochn-chapter {
+      font-weight: 900;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+    .rems-potochn-paragraph {
+      text-indent: 2rem;
+      font-size: 0.77rem;
+    }
+    .rems-potochn-text {
+      font-size: 0.77rem;
+    }
+    .rems-potochn-italic {
+      text-indent: 2rem;
+      font-style: italic;
+      text-decoration: underline;
+      font-size: 0.77rem;
+    }
+    .rems-budjet-chapter {
+      font-weight: 900;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+    .rems-budjet-paragraph {
+      text-indent: 2rem;
+      font-size: 0.77rem;
+    }
+    .rems-budjet-text {
+      font-size: 0.77rem;
+    }
+
+    .jkh-budjet-chapter {
+      font-weight: 900;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    .jkh-budjet-paragraph {
+      text-indent: 2rem;
+      font-size: 1rem;
+    }
+    .jkh-budjet-text {
+      font-size: 1rem;
+    }
+
+    .agro-contract-chapter {
+      font-weight: 900;
+      font-size: 1rem;
+    }
+    .agro-contract-paragraph {
+      text-indent: 2rem;
+      font-size: 1rem;
+    }
+    .agro-contract-text {
+      font-size: 1rem;
+    }
+    .jkh-proectn-avt-chapter {
+      font-weight: 900;
+      font-size: 1rem;
+      margin-top: 0.25rem;
+    }
+    .jkh-proectn-avt-paragraph {
+      text-indent: 2rem;
+      font-size: 1rem;
+    }
+    .jkh-proectn-avt-text {
+      font-size: 1rem;
+    }
+    .jkh-proectn-avt-akt-text {
+      font-size: 1rem;
+    }
+    .jkh-proectn-avt-kosht-text {
+      font-size: 1rem;
+    }
+    .tehnadzor-chapter {
+      font-weight: 900;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    .tehnadzor-paragraph {
+      text-indent: 2rem;
+      font-size: 0.85rem;
+    }
+    .tehnadzor-text {
+      font-size: 0.85rem;
+    }
+    .tehnadzor-caption {
+      font-size: 0.5rem;
+    }
+    .tehnadzor-akt-text {
+      font-size: 1rem;
+    }
+    .tehnadzor-akt-caption {
+      font-size: 0.5rem;
+    }
+    .calendarn-grafik-text {
+      font-size: 1rem;
+    }
+    .calendarn-grafik-vertical-text {
+      font-size: 1rem;
+      transform: rotate(-90deg);
+      margin-bottom: -7mm;
+    }
+    .jkh-nakaz-text {
+      font-size: 1rem;
+    }
+    .jkh-pismo-text {
+      font-size: 1rem;
+    }
+    .jkh-trebov-smeta-text {
+      font-size: 1rem;
+    }
+    .nakl-rems-text {
+      font-size: 1rem;
+    }
+
+    .rems-budjet-pr-avt-dog-chapter {
+      font-weight: 900;
+      font-size: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .rems-budjet-pr-avt-dog-paragraph {
+      text-indent: 2rem;
+      font-size: 0.95rem;
+    }
+    .rems-budjet-pr-avt-dog-text {
+      font-size: 0.95rem;
+    }
+    .rems-budjet-pr-avt-akt-chapter {
+      font-weight: 900;
+      font-size: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .rems-budjet-pr-avt-akt-paragraph {
+      text-indent: 2rem;
+      font-size: 0.95rem;
+    }
+    .rems-budjet-pr-avt-akt-text {
+      font-size: 0.95rem;
+    }
+    .rems-budj-jurnal-rabot-text {
+      font-size: 1rem;
+    }
+    .rems-budj-jurnal-rabot-main {
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .rems-budj-jurnal-rabot-caption {
+      font-size: 0.5rem;
+    }
+    .rems-budj-jurnal-rabot-italic {
+      font-family: 'Marck Script', cursive;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1rem;
+    }
+    .rems-budj-jurnal-rabot-hr {
+      height: 1.25rem;
+      color: transparent;
+      border-bottom: 1px solid black;
+    }
+    .rems-budj-jurnal-rabot-empty-row {
+      height: 1.25rem;
+      color: transparent;
+    }
+    .rems-budj-jurnal-avt-main {
+      font-size: 1rem;
+    }
+    .rems-budj-jurnal-avt-hr {
+      height: 1.25rem;
+      color: transparent;
+      border-bottom: 1px solid black;
+    }
+    .rems-budj-jurnal-avt-vertical {
+      font-size: 1rem;
+      transform: rotate(-90deg);
+    }
+    .rems-budj-jurnal-avt-empty {
+      height: 1.25rem;
+      color: transparent;
+    }
+    .rems-budj-nakaz-gip-main {
+      font-size: 1rem;
+    }
+    .rems-budj-nakaz-gip-hr {
+      height: 1.25rem;
+      color: transparent;
+      border-bottom: 1px solid black;
+    }
+
+    .rems-budj-nakaz-gip-empty {
+      height: 1.25rem;
+      color: transparent;
+    }
+    .rems-budj-nakaz-gip-indent {
+      font-size: 1rem;
+      text-indent: 2rem;
+    }
+    .rems-budj-zavdannya-main {
+      font-size: 1rem;
+    }
+    .rems-budj-zavdannya-empty {
+      height: 1.25rem;
+      color: transparent;
+    }
+    .rems-budj-cc1-main {
+      font-size: 0.95rem;
+    }
+    .rems-budj-cc1-chapter {
+      font-weight: 900;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-decoration: underline;
+    }
+    .rems-budj-cc1-indent {
+      font-size: 0.95rem;
+      text-indent: 2rem;
+    }
+    .rems-potochn-akt-skryt-text {
+      font-size: 1rem;
+    }
+    .rems-potochn-akt-skryt-chapter {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .rems-potochn-akt-skryt-sub {
+      font-size: 0.6rem;
+    }
+    .rems-potochn-akt-musor-text {
+      font-size: 1rem;
+    }
+
+    table.table-main {
+      td,
+      th {
+        border: 1px solid black;
+      }
+    }
+  }
+}

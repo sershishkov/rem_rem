@@ -1,4 +1,5 @@
 import { monthsWorkBudjet } from '@/constants/constants';
+import { I_Client, I_ClientType } from '@/interfaces/refdata';
 
 const genNumberByDate = (enteredDate: Date) => {
   const fullYear = enteredDate.getFullYear();
@@ -85,38 +86,6 @@ export const generateMultipleDocNumbers = () => {
   };
 };
 
-export function Export22Doc(element: string, filename = '') {
-  let preHtml =
-    "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
-  let postHtml = '</body></html>';
-  //@ts-ignore
-  let html = preHtml + document.getElementById(element).innerHTML + postHtml;
-
-  let blob = new Blob(['\ufeff', html], {
-    type: 'application/msword',
-  });
-
-  let url =
-    'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
-
-  filename = filename ? filename + '.doc' : 'document.doc';
-
-  let downloadLink = document.createElement('a');
-
-  document.body.appendChild(downloadLink);
-  //@ts-ignore
-  if (navigator.msSaveOrOpenBlob) {
-    //@ts-ignore
-    navigator.msSaveOrOpenBlob(blob, filename);
-  } else {
-    downloadLink.href = url;
-    downloadLink.download = filename;
-    downloadLink.click();
-  }
-
-  document.body.removeChild(downloadLink);
-}
-
 export const setDefaultMonths = () => {
   const newDate = new Date();
   const currentDate = newDate.getDate();
@@ -138,5 +107,33 @@ export const setDefaultMonths = () => {
   return {
     startMonth,
     endMonth,
+  };
+};
+
+export const separateFirms = (
+  all__ClientTypes: I_ClientType[],
+  allFirms: I_Client[]
+) => {
+  const arr__ourFirms: I_Client[] = [];
+  const arr__Clients: I_Client[] = [];
+
+  const ourFirmObj = all__ClientTypes.find(
+    (item: I_ClientType) => item.clientTypeName === 'наша фирма'
+  );
+
+  allFirms.forEach((item: I_Client) => {
+    const hasOurFirm = item.clientType?.some(
+      (oneType) => oneType._id === ourFirmObj?._id
+    );
+
+    if (hasOurFirm) {
+      arr__ourFirms.push(item);
+    } else {
+      arr__Clients.push(item);
+    }
+  });
+  return {
+    arr__ourFirms,
+    arr__Clients,
   };
 };
