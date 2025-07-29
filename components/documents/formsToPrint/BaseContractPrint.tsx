@@ -39,34 +39,25 @@ export default function BaseContractPrint({
   });
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
-  const clientType = currentClient?.firmType?.firmTypeShortName;
+  const clientTypeShort = currentClient?.firmType?.firmTypeShortName;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-expect-error
+  const clientTypeLong = currentClient?.firmType?.firmTypeLongName;
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   const executorType = currentOurFirm?.firmType?.firmTypeShortName;
 
   let clientPreambula = '';
   let executorPreambula = '';
-  if (clientType === 'Фізична особа' || clientType === 'ФОП') {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    clientPreambula = ` ${currentClient.firmType.firmTypeLongName!} «${
-      currentClient.clientLongName
-    }», надалі іменується «ЗАМОВНИК», та`;
+  if (clientTypeShort === 'Фізична особа' || clientTypeShort === 'ФОП') {
+    clientPreambula = ` ${clientTypeLong} «${currentClient.clientLongName}», надалі іменується «ЗАМОВНИК», та`;
   } else {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    clientPreambula = ` ${currentClient.firmType.firmTypeLongName!} «${
-      currentClient?.clientLongName
-    }», в особі ${currentClient?.jobTitle_rodit} ${
-      currentClient?.lastName_rodit
-    } ${currentClient?.firstName_rodit} ${
-      currentClient?.patronymic_rodit
-    }, що діє на підставі ${
-      currentClient?.whichActsOnTheBasis
-    }, надалі іменується «ЗАМОВНИК», та`;
+    clientPreambula = ` ${clientTypeLong} «${currentClient?.clientLongName}», в особі ${currentClient?.jobTitle_rodit} ${currentClient?.lastName_rodit} ${currentClient?.firstName_rodit} ${currentClient?.patronymic_rodit}, що діє на підставі ${currentClient?.whichActsOnTheBasis}, надалі іменується «ЗАМОВНИК», та`;
   }
 
-  const injectPhrase = arr__TypeOfOSBB.includes(clientType)
+  const injectPhrase = arr__TypeOfOSBB.includes(clientTypeShort)
     ? 'у житловому будинку за адресою: '
     : ' за адресою:';
   const workAddress = currentContract?.workAddress;
@@ -94,15 +85,7 @@ export default function BaseContractPrint({
   } else {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    executorPreambula = ` ${currentOurFirm.firmType.firmTypeShortName!} «${
-      currentOurFirm?.clientLongName
-    }» , надалі іменується « ВИКОНАВЕЦЬ » в особі ${
-      currentOurFirm?.jobTitle_rodit
-    } ${currentOurFirm?.lastName_rodit} ${currentOurFirm?.firstName_rodit} ${
-      currentOurFirm?.patronymic_rodit
-    }, що діє на підставі ${
-      currentOurFirm?.whichActsOnTheBasis
-    }, ${ourTaxationType}, з іншого боку, кожна окремо - Сторона, а разом – Сторони уклали даний Договір про наступне: `;
+    executorPreambula = ` ${executorType} «${currentOurFirm?.clientLongName}» , надалі іменується « ВИКОНАВЕЦЬ » в особі ${currentOurFirm?.jobTitle_rodit} ${currentOurFirm?.lastName_rodit} ${currentOurFirm?.firstName_rodit} ${currentOurFirm?.patronymic_rodit}, що діє на підставі ${currentOurFirm?.whichActsOnTheBasis}, ${ourTaxationType}, з іншого боку, кожна окремо - Сторона, а разом – Сторони уклали даний Договір про наступне: `;
   }
 
   const prepaymentPercentage = currentContract?.prepaymentPercentage;
@@ -195,7 +178,7 @@ export default function BaseContractPrint({
   const clientFirm = `${currentClient?.firmType?.firmTypeShortName} ${currentClient?.clientShortName}`;
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
-  const executorFirm = `${currentOurFirm?.firmType?.firmTypeShortName} ${currentOurFirm?.clientShortName}`;
+  const executorFirm = `${executorType} ${currentOurFirm?.clientShortName}`;
   const clientAddress = `${currentClient?.postIndex} ${currentClient?.address}`;
   const executorAddress = `${currentOurFirm?.postIndex} ${currentOurFirm?.address}`;
   const clientIBAN = `${currentClient?.iban}`;
@@ -233,9 +216,9 @@ export default function BaseContractPrint({
     executorEDRPO = `ЄДРПОУ: ${currentOurFirm?.edrpou}`;
   }
 
-  if (clientType === 'Фізична особа') {
+  if (clientTypeShort === 'Фізична особа') {
     clientEDRPO = `ІПН: ${currentClient?.inn}`;
-  } else if (clientType === 'ФОП') {
+  } else if (clientTypeShort === 'ФОП') {
     clientEDRPO = `ЄДРПОУ: ${currentClient?.inn}`;
   } else {
     clientEDRPO = `ЄДРПОУ: ${currentClient?.edrpou}`;
