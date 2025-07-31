@@ -31,6 +31,7 @@ import {
   accountant_role,
   manager_refData_links,
   manager_Docums_links,
+  manager_Tempates_links,
   accountant_refData_links,
   accountant_Money_links,
   admin_links,
@@ -162,6 +163,16 @@ function NavigationList({
         userRole={user?.role!}
         allowedRoles={manager_role}
         linksToShow={manager_Docums_links}
+        groupIcon={GroupIcon}
+        itemIcon={InboxIcon}
+      />
+      <ListItemCollapse
+        caption='Шаблоны'
+        toggleDrawer={toggleDrawer}
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
+        userRole={user?.role!}
+        allowedRoles={manager_role}
+        linksToShow={manager_Tempates_links}
         groupIcon={GroupIcon}
         itemIcon={InboxIcon}
       />

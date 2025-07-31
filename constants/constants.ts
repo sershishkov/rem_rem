@@ -104,6 +104,15 @@ export const manager_refData_links = [
 
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
+
+const manager_Tempates = '/manager/templates';
+export const manager_Tempates_links = [
+  {
+    link: `${manager_Tempates}/contracts`,
+    caption: `шабл Договора`,
+  },
+];
+
 const manager_Docums = '/manager/documents';
 export const manager_Docums_links = [
   {

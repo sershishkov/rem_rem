@@ -593,3 +593,28 @@ export interface I_Calculation {
   creator: Types.ObjectId | I_User | string;
   isActive: boolean;
 }
+
+export interface I_ContractTempateChapterPointSubPoint {
+  sub_point_id: string;
+  sub_pointTitle: string;
+}
+
+export interface I_ContractTempateChapterPoint {
+  point_id: string;
+  pointTitle: string; //Пункт раздела
+  pointSubpoints?: I_ContractTempateChapterPointSubPoint[]; //Подпункты раздела
+}
+
+export interface I_ContractTempateChapter {
+  chapter_id: string;
+  chapterTitle: string; //Заголовок раздела
+  chapterPoints: I_ContractTempateChapterPoint[]; //Пункты раздела
+}
+
+export interface I_ContractTempate {
+  _id?: string;
+  templateContractName: string; //Название шаблона контракта
+  templateContractDescription: string; //Описание шаблона контракта
+  contractPreambule: string; //Преамбула контракта
+  contractBody: I_ContractTempateChapter[];
+}
