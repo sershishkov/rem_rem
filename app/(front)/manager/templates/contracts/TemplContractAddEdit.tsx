@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -13,8 +13,6 @@ import {
 import {
   I_ContractTempate,
   I_ContractTempateChapter,
-  // I_ContractTempateChapterPoint,
-  // I_ContractTempateChapterPointSubPoint,
 } from '@/interfaces/refdata';
 
 import Grid from '@mui/material/Grid';
@@ -59,7 +57,7 @@ export default function TemplContractAddEdit({
     inputFocus?.focus();
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (id) {
       const myGetOne = async () => {
         const item: I_ContractTempate = await item__get_one(
@@ -71,10 +69,8 @@ export default function TemplContractAddEdit({
             templateContractName: item.templateContractName || '',
             templateContractDescription: item.templateContractDescription || '',
             contractPreambule: item.contractPreambule || '',
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            contractBody: item.contractBody || [],
           });
+          setLocalContractBody(item.contractBody || []);
         }
       };
       myGetOne();
@@ -100,10 +96,7 @@ export default function TemplContractAddEdit({
 
     const updatedChapters = localContractBody.map((chapter) => {
       if (chapter.chapter_id === chapterID) {
-        return {
-          ...chapter,
-          capterPoints: [...chapter.chapterPoints, newPoint],
-        };
+        chapter.chapterPoints = [...chapter.chapterPoints, newPoint];
       }
       return chapter;
     });
@@ -302,9 +295,9 @@ export default function TemplContractAddEdit({
       sx={{
         // border: '1px solid yellow',
         padding: matches ? '0 2rem' : '0 0.5rem',
-        maxWidth: '500px',
-        margin: 'auto',
-        width: '100%',
+        // maxWidth: '500px',
+        margin: '0 auto',
+        width: '95%',
       }}
     >
       <Grid>
@@ -356,100 +349,143 @@ export default function TemplContractAddEdit({
       </Grid>
 
       <Grid>
-        <Button variant='outlined' onClick={addChapter} sx={{ mt: 2, mb: 2 }}>
-          Добавить главу
-        </Button>
-        {localContractBody.map((chapter) => (
-          <Grid
-            key={chapter.chapter_id}
-            sx={{
-              border: '1px solid #ccc',
-              padding: '1rem',
-              marginBottom: '1rem',
-            }}
-          >
-            <TextField
-              id={chapter.chapter_id}
-              name={chapter.chapter_id}
-              label='Название главы'
-              value={chapter.chapterTitle}
-              onChange={handleChangeChapter}
-              fullWidth
-            />
-            <Button
-              variant='outlined'
-              onClick={() => removeChapter(chapter.chapter_id)}
+        {localContractBody.length > 0 &&
+          localContractBody.map((chapter) => (
+            <Grid
+              key={chapter.chapter_id}
+              sx={{
+                border: '1px solid #ccc',
+                padding: '1rem',
+                marginBottom: '1rem',
+              }}
             >
-              Удалить главу
-            </Button>
-            <Button
-              variant='outlined'
-              onClick={() => addPoint(chapter.chapter_id)}
-            >
-              Добавить пункт
-            </Button>
-            {chapter.chapterPoints.map((point) => (
-              <Grid key={point.point_id} sx={{ marginTop: '1rem' }}>
-                <TextField
-                  id={point.point_id}
-                  label='Название пункта'
-                  value={point.pointTitle}
-                  onChange={(e) => handleChangePoint(chapter.chapter_id, e)}
-                  fullWidth
-                />
-                <Button
-                  variant='outlined'
-                  onClick={() =>
-                    removePoint(chapter.chapter_id, point.point_id)
-                  }
-                >
-                  Удалить пункт
-                </Button>
-                <Button
-                  variant='outlined'
-                  onClick={() =>
-                    addSubPoint(chapter.chapter_id, point.point_id)
-                  }
-                >
-                  Добавить подпункт
-                </Button>
-                {point.pointSubpoints?.map((subPoint) => (
-                  <Grid
-                    key={subPoint.sub_point_id}
-                    sx={{ marginTop: '0.5rem' }}
-                  >
-                    <TextField
-                      id={subPoint.sub_point_id}
-                      label='Название подпункта'
-                      value={subPoint.sub_pointTitle}
-                      onChange={(e) =>
-                        handleChangeSubPoint(
-                          chapter.chapter_id,
-                          point.point_id,
-                          e
-                        )
-                      }
-                      fullWidth
-                    />
-                    <Button
-                      variant='outlined'
-                      onClick={() =>
-                        removeSubPoint(
-                          chapter.chapter_id,
-                          point.point_id,
-                          subPoint.sub_point_id
-                        )
-                      }
+              <TextField
+                id={chapter.chapter_id}
+                name={chapter.chapter_id}
+                label='Название главы'
+                value={chapter.chapterTitle}
+                onChange={handleChangeChapter}
+                fullWidth
+                sx={{ input: { textAlign: 'center' } }}
+              />
+              {chapter.chapterPoints.length > 0 &&
+                chapter.chapterPoints.map((point) => (
+                  <Grid key={point.point_id} sx={{ marginTop: '1rem' }}>
+                    <Grid container spacing={2}>
+                      <Grid flex={1}>
+                        <TextField
+                          multiline
+                          rows={4}
+                          id={point.point_id}
+                          label='Название пункта'
+                          value={point.pointTitle}
+                          onChange={(e) =>
+                            handleChangePoint(chapter.chapter_id, e)
+                          }
+                          fullWidth
+                        />
+                      </Grid>
+                      <Grid container direction={'column'} spacing={2}>
+                        <Button
+                          variant='outlined'
+                          color='error'
+                          onClick={() =>
+                            removePoint(chapter.chapter_id, point.point_id)
+                          }
+                        >
+                          Удалить пункт
+                        </Button>
+                      </Grid>
+                    </Grid>
+
+                    {(point.pointSubpoints ?? []).length > 0 &&
+                      (point.pointSubpoints ?? []).map((subPoint) => (
+                        <Grid
+                          key={subPoint.sub_point_id}
+                          sx={{ marginTop: '0.5rem' }}
+                        >
+                          <Grid container spacing={2}>
+                            <Grid flex={1} pl={5}>
+                              <TextField
+                                id={subPoint.sub_point_id}
+                                label='Название подпункта'
+                                value={subPoint.sub_pointTitle}
+                                onChange={(e) =>
+                                  handleChangeSubPoint(
+                                    chapter.chapter_id,
+                                    point.point_id,
+                                    e
+                                  )
+                                }
+                                fullWidth
+                                multiline
+                                rows={4}
+                              />
+                            </Grid>
+                            <Grid container direction={'column'} spacing={2}>
+                              <Button
+                                variant='outlined'
+                                color='error'
+                                onClick={() =>
+                                  removeSubPoint(
+                                    chapter.chapter_id,
+                                    point.point_id,
+                                    subPoint.sub_point_id
+                                  )
+                                }
+                              >
+                                Удалить подпункт
+                              </Button>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      ))}
+                    <Grid
+                      mt={2}
+                      container
+                      spacing={2}
+                      alignItems='center'
+                      justifyContent='center'
                     >
-                      Удалить подпункт
-                    </Button>
+                      <Button
+                        variant='outlined'
+                        onClick={() =>
+                          addSubPoint(chapter.chapter_id, point.point_id)
+                        }
+                      >
+                        Добавить подпункт
+                      </Button>
+                    </Grid>
                   </Grid>
                 ))}
+              <Grid
+                mt={2}
+                container
+                spacing={2}
+                alignItems='center'
+                justifyContent='space-between'
+              >
+                <Button
+                  variant='outlined'
+                  onClick={() => addPoint(chapter.chapter_id)}
+                >
+                  Добавить пункт
+                </Button>
+
+                <Button
+                  variant='outlined'
+                  color='error'
+                  onClick={() => removeChapter(chapter.chapter_id)}
+                >
+                  Удалить главу
+                </Button>
               </Grid>
-            ))}
-          </Grid>
-        ))}
+            </Grid>
+          ))}
       </Grid>
+      <Button variant='outlined' onClick={addChapter} sx={{ mt: 2, mb: 2 }}>
+        Добавить главу
+      </Button>
 
       <Grid>
         <Button
@@ -457,7 +493,7 @@ export default function TemplContractAddEdit({
           fullWidth
           disabled={templateContractName.length === 0}
           variant='contained'
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 5 }}
         >
           Сохранить
         </Button>
