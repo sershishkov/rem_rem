@@ -105,11 +105,11 @@ export const manager_refData_links = [
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 
-const manager_Tempates = '/manager/templates';
+const manager_Templates = '/manager/templates';
 export const manager_Tempates_links = [
   {
-    link: `${manager_Tempates}/contracts`,
-    caption: `шабл Договора`,
+    link: `${manager_Templates}/contracts`,
+    caption: `шабл Договоров`,
   },
 ];
 
