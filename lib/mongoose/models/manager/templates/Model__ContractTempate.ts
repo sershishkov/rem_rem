@@ -10,6 +10,10 @@ const contractTempate__Schema = new Schema<I_ContractTempate>({
     required: [true, 'Please add a templateContract name'],
     unique: true,
   },
+  templateContractHeader: {
+    type: String,
+    default: 'Пока нет описания',
+  },
   templateContractDescription: {
     type: String,
     default: 'Пока нет описания',

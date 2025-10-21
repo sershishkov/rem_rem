@@ -50,6 +50,7 @@ export const PUT = async (request: NextRequest, { params }: Props) => {
   }
   const {
     templateContractName,
+    templateContractHeader,
     templateContractDescription,
     contractPreambule,
     contractBody,
@@ -60,6 +61,7 @@ export const PUT = async (request: NextRequest, { params }: Props) => {
 
     const new__ITEM = {
       templateContractName,
+      templateContractHeader,
       templateContractDescription,
       contractPreambule,
       contractBody,

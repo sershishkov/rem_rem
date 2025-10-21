@@ -26,6 +26,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 const currentURL = '/manager/templates/contracts';
 const initState = {
   templateContractName: '',
+  templateContractHeader: '',
   templateContractDescription: '',
   contractPreambule: '',
 };
@@ -46,6 +47,7 @@ export default function TemplContractAddEdit({
 
   const {
     templateContractName,
+    templateContractHeader,
     templateContractDescription,
     contractPreambule,
   } = formData;
@@ -67,6 +69,7 @@ export default function TemplContractAddEdit({
         if (item) {
           setFormData({
             templateContractName: item.templateContractName || '',
+            templateContractHeader: item.templateContractHeader || '',
             templateContractDescription: item.templateContractDescription || '',
             contractPreambule: item.contractPreambule || '',
           });
@@ -271,6 +274,7 @@ export default function TemplContractAddEdit({
 
     const created__Data = {
       templateContractName,
+      templateContractHeader,
       templateContractDescription,
       contractPreambule,
       contractBody: localContractBody,
@@ -315,6 +319,20 @@ export default function TemplContractAddEdit({
           type='text'
           id='templateContractName'
           value={templateContractName ?? ''}
+          onChange={handleChangeFormData}
+        />
+      </Grid>
+
+      <Grid>
+        <TextField
+          margin='normal'
+          required
+          fullWidth
+          name='templateContractHeader'
+          label='Заголовок шаблона контракта'
+          type='text'
+          id='templateContractHeader'
+          value={templateContractHeader ?? ''}
           onChange={handleChangeFormData}
         />
       </Grid>

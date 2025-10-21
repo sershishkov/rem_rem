@@ -6,12 +6,14 @@ import { connectToDB } from '@/lib/mongoose/connectToDB';
 export const POST = async (request: NextRequest) => {
   const {
     templateContractName,
+    templateContractHeader,
     templateContractDescription,
     contractPreambule,
     contractBody,
   } = await request.json();
   if (
     !templateContractName ||
+    !templateContractHeader ||
     !templateContractDescription ||
     !contractPreambule
   ) {
@@ -42,6 +44,7 @@ export const POST = async (request: NextRequest) => {
     }
     const new__ITEM = await Model__ContractTempate.create({
       templateContractName,
+      templateContractHeader,
       templateContractDescription,
       contractPreambule,
       contractBody,

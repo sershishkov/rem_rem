@@ -614,6 +614,7 @@ export interface I_ContractTempateChapter {
 export interface I_ContractTempate {
   _id?: string;
   templateContractName: string; //Название шаблона контракта
+  templateContractHeader: string; //Заголовок шаблона контракта
   templateContractDescription: string; //Описание шаблона контракта
   contractPreambule: string; //Преамбула контракта
   contractBody: I_ContractTempateChapter[];
